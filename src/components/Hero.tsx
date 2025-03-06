@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
+import { FaArrowRight, FaArrowDown } from "react-icons/fa";
+import { useState } from "react";
 import hero_image_1 from "../assets/hero_img_1.jpg";
 import hero_image_2 from "../assets/hero_img_2.jpg";
 import chinese from "../assets/chinese.jpg";
 
-import { FaArrowRight } from "react-icons/fa";
-
 const Hero = () => {
+  const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+
   return (
     <div className="container mx-auto px-5 pt-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -27,11 +30,24 @@ const Hero = () => {
             <div className="font-medium text-red-600 text-xl md:text-2xl lg:text-4xl sm:pb-4 pb-2">
               $15.74
             </div>
-            <div className="bg-[#184D47] hover:bg-[#179957] text-white rounded-full w-fit flex items-center gap-2 md:gap-4 px-3 md:px-5 py-2 text-sm md:text-lg cursor-pointer">
-              Shop Now <FaArrowRight />
-            </div>
+
+            <Link to="/fruits">
+              <div
+                className="bg-[#184D47] hover:bg-[#179957] text-white rounded-full w-fit flex items-center gap-2 px-3 md:px-5 py-2 text-sm md:text-lg cursor-pointer"
+                onMouseEnter={() => setHoveredButton("fruits")}
+                onMouseLeave={() => setHoveredButton(null)}
+              >
+                Shop Now{" "}
+                {hoveredButton === "fruits" ? (
+                  <FaArrowDown />
+                ) : (
+                  <FaArrowRight />
+                )}
+              </div>
+            </Link>
           </div>
         </div>
+
         <div className="grid grid-rows-2 gap-4">
           <div className="relative">
             <img
@@ -47,11 +63,14 @@ const Hero = () => {
                 Starting At
               </p>
               <div className="font-medium text-red-600 text-lg md:text-2xl sm:text-3xl">
-                $25
+                $15
               </div>
-              <div className="bg-[#184D47] hover:bg-[#179957] text-white rounded-full w-fit flex items-center gap-2 px-3 md:px-5 py-2 text-sm md:text-lg cursor-pointer">
-                Shop Now <FaArrowRight />
-              </div>
+
+              <Link to="/fruits">
+                <div className="bg-[#184D47] hover:bg-[#179957] text-white rounded-full w-fit flex items-center gap-2 px-3 md:px-5 py-2 text-sm md:text-lg cursor-pointer">
+                  Shop Now <FaArrowRight />
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -71,9 +90,12 @@ const Hero = () => {
               <div className="font-medium text-red-600 text-lg md:text-2xl sm:text-3xl">
                 $15
               </div>
-              <div className="bg-[#184D47] hover:bg-[#179957] text-white rounded-full w-fit flex items-center gap-2 px-3 md:px-5 py-2 text-sm md:text-lg cursor-pointer">
-                Shop Now <FaArrowRight />
-              </div>
+
+              <Link to="/chinese-food">
+                <div className="bg-[#184D47] hover:bg-[#179957] text-white rounded-full w-fit flex items-center gap-2 px-3 md:px-5 py-2 text-sm md:text-lg cursor-pointer">
+                  Shop Now <FaArrowRight />
+                </div>
+              </Link>
             </div>
           </div>
         </div>
