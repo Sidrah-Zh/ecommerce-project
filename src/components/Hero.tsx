@@ -31,20 +31,14 @@ const Hero = () => {
               $15.74
             </div>
 
-            <Link to="/fruits">
-              <div
-                className="bg-[#184D47] hover:bg-[#179957] text-white rounded-full w-fit flex items-center gap-2 px-3 md:px-5 py-2 text-sm md:text-lg cursor-pointer"
-                onMouseEnter={() => setHoveredButton("fruits")}
-                onMouseLeave={() => setHoveredButton(null)}
-              >
-                Shop Now{" "}
-                {hoveredButton === "fruits" ? (
-                  <FaArrowDown />
-                ) : (
-                  <FaArrowRight />
-                )}
-              </div>
-            </Link>
+            <div
+              className="bg-[#184D47] hover:bg-[#179957] text-white rounded-full w-fit flex items-center gap-2 px-3 md:px-5 py-2 text-sm md:text-lg cursor-pointer"
+              onMouseEnter={() => setHoveredButton("fruits")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              Shop Now{" "}
+              {hoveredButton === "fruits" ? <FaArrowDown /> : <FaArrowRight />}
+            </div>
           </div>
         </div>
 
