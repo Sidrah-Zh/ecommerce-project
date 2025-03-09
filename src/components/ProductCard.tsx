@@ -1,19 +1,20 @@
 import { AiFillStar, AiOutlineStar, AiOutlineShopping } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 
-interface propsType {
+interface Product {
+  id: number;
   img: string;
   name: string;
-  price: string;
+  price: number;
   route: string;
 }
 
-const ProductCard: React.FC<propsType> = ({ img, name, price, route }) => {
+const ProductCard: React.FC<Product> = ({ id, img, name, price }) => {
+  const dispatch = useDispatch();
+
   return (
-    <Link
-      to={route}
-      className="block hover:scale-105 transition-transform h-full"
-    >
+    <div className="block hover:scale-105 transition-transform h-full">
       <div className="border border-gray-200 hover:border-gray-300 rounded-lg relative h-full flex flex-col">
         <img
           className="w-full h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px] object-cover rounded-t-lg"
@@ -36,14 +37,15 @@ const ProductCard: React.FC<propsType> = ({ img, name, price, route }) => {
             {price}
           </h3>
 
-          <div className="absolute -top-4 right-2 bg-[#184D47] text-white text-[24px] sm:text-[28px] w-[45px] sm:w-[50px] h-[45px] sm:h-[50px] rounded-full grid place-items-center cursor-pointer">
-            <Link to={route}>
-              <AiOutlineShopping />
-            </Link>
-          </div>
+          <button
+            onClick={() => dispatch(addToCart({ id, img, name, price }))}
+            className="absolute -top-4 right-2 bg-[#184D47] text-white text-[24px] sm:text-[28px] w-[45px] sm:w-[50px] h-[45px] sm:h-[50px] rounded-full grid place-items-center cursor-pointer"
+          >
+            <AiOutlineShopping />
+          </button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

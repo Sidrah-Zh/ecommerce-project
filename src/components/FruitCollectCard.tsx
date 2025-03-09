@@ -5,6 +5,7 @@ interface FruitProps {
   name: string;
   oldPrice: string;
   newPrice: string;
+  onAddToCart: () => void;
 }
 
 const FruitCollectCard: React.FC<FruitProps> = ({
@@ -12,6 +13,7 @@ const FruitCollectCard: React.FC<FruitProps> = ({
   name,
   oldPrice,
   newPrice,
+  onAddToCart,
 }) => {
   return (
     <div className="border border-gray-200 hover:border-gray-300 hover:scale-105 transition-transform rounded-lg relative p-2 w-full max-w-sm mx-auto">
@@ -41,7 +43,10 @@ const FruitCollectCard: React.FC<FruitProps> = ({
           <p className="text-gray-500 line-through text-sm">{oldPrice}</p>
         </div>
 
-        <button className="bg-[#184D47] text-white px-4 py-2 mt-2 rounded-lg hover:bg-[#179957] w-full">
+        <button
+          onClick={onAddToCart}
+          className="bg-[#184D47] text-white px-4 py-2 mt-2 rounded-lg hover:bg-[#179957] w-full"
+        >
           Add to Cart
         </button>
       </div>

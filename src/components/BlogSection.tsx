@@ -9,18 +9,21 @@ const data = [
     title: "Healthy Food, Healthy Life",
     date: "Aug 27, 2023",
     comment: 8,
+    url: "https://www.google.com",
   },
   {
     img: foodblog2,
     title: "Balanced Diet for a Better Tomorrow",
     date: "Sep 1, 2023",
     comment: 5,
+    url: "https://www.google.com",
   },
   {
     img: foodblog3,
     title: "How Fresh Fruits Boost Immunity",
     date: "Sep 5, 2023",
     comment: 12,
+    url: "https://www.google.com",
   },
 ];
 
@@ -35,13 +38,19 @@ const BlogSection = () => {
 
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 pt-8">
         {data.map((el, index) => (
-          <BlogCard
+          <a
             key={index}
-            img={el.img}
-            title={el.title}
-            date={el.date}
-            comment={el.comment}
-          />
+            href={el.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BlogCard
+              img={el.img}
+              title={el.title}
+              date={el.date}
+              comment={el.comment}
+            />
+          </a>
         ))}
       </div>
     </div>

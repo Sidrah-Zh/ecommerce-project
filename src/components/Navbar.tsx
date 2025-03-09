@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 import { BsSearch } from "react-icons/bs";
 import {
   AiOutlineUser,
@@ -6,10 +9,12 @@ import {
   AiOutlineMenu,
   AiOutlineClose,
 } from "react-icons/ai";
-import CartCountBadge from "./CartCountBadge";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const cartCount = useSelector(
+    (state: RootState) => state.cart.cartItems.length
+  );
 
   return (
     <nav className="container mx-auto px-5 py-4">
@@ -37,10 +42,18 @@ const Navbar = () => {
             <div className="border border-gray-400 rounded-full w-[50px] h-[50px] grid place-items-center text-xl">
               <AiOutlineUser />
             </div>
-            <div className="border border-gray-400 rounded-full w-[50px] h-[50px] grid place-items-center text-xl relative">
+
+            <Link
+              to="/cart"
+              className="relative border border-gray-400 rounded-full w-[50px] h-[50px] grid place-items-center text-xl"
+            >
               <AiOutlineShoppingCart />
-              <CartCountBadge size="w-[25px] h-[25px]" />
-            </div>
+              {cartCount > 0 && (
+                <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-[20px] h-[20px] flex items-center justify-center text-xs">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
           </div>
         </div>
       </div>
@@ -56,10 +69,18 @@ const Navbar = () => {
             <div className="border border-gray-400 rounded-full w-[50px] h-[50px] grid place-items-center text-xl">
               <AiOutlineUser />
             </div>
-            <div className="border border-gray-400 rounded-full w-[50px] h-[50px] grid place-items-center text-xl relative">
+
+            <Link
+              to="/cart"
+              className="relative border border-gray-400 rounded-full w-[50px] h-[50px] grid place-items-center text-xl"
+            >
               <AiOutlineShoppingCart />
-              <CartCountBadge size="w-[25px] h-[25px]" />
-            </div>
+              {cartCount > 0 && (
+                <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-[20px] h-[20px] flex items-center justify-center text-xs">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
           </div>
         </div>
       )}

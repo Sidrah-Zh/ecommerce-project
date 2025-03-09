@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 import FruitCollectCard from "../components/FruitCollectCard";
 import fruit1 from "../assets/fruit1.jpg";
 import fruit2 from "../assets/fruit3.jpg";
@@ -9,6 +11,8 @@ import fruit5 from "../assets/fruit5.jpg";
 import fruit6 from "../assets/img2.jpg";
 
 const FruitsPage = () => {
+  const dispatch = useDispatch();
+
   const fruits = [
     { id: 1, name: "Fresh Apple", oldPrice: "$5", newPrice: "$4", img: fruit1 },
     {
@@ -27,37 +31,7 @@ const FruitsPage = () => {
       img: fruit4,
     },
     { id: 5, name: "Fresh Apple", oldPrice: "$5", newPrice: "$4", img: fruit5 },
-    { id: 7, name: "Fresh Apple", oldPrice: "$5", newPrice: "$4", img: fruit6 },
-    { id: 8, name: "Fresh Apple", oldPrice: "$5", newPrice: "$4", img: fruit1 },
-    {
-      id: 9,
-      name: "Organic Banana",
-      oldPrice: "$3",
-      newPrice: "$2.5",
-      img: fruit2,
-    },
-    { id: 10, name: "Fresh Kiwi", oldPrice: "$5", newPrice: "$4", img: fruit3 },
-    {
-      id: 11,
-      name: "Fresh Pineapple",
-      oldPrice: "$5",
-      newPrice: "$4",
-      img: fruit4,
-    },
-    {
-      id: 12,
-      name: "Fresh Apple",
-      oldPrice: "$5",
-      newPrice: "$4",
-      img: fruit5,
-    },
-    {
-      id: 13,
-      name: "Fresh Apple",
-      oldPrice: "$5",
-      newPrice: "$4",
-      img: fruit6,
-    },
+    { id: 6, name: "Fresh Apple", oldPrice: "$5", newPrice: "$4", img: fruit6 },
   ];
 
   return (
@@ -82,6 +56,30 @@ const FruitsPage = () => {
             name={fruit.name}
             oldPrice={fruit.oldPrice}
             newPrice={fruit.newPrice}
+            onAddToCart={() => {
+              console.log(`Adding to cart: ${fruit.name}`);
+
+              let formattedPrice = parseFloat(
+                fruit.newPrice.replace(/[^0-9.]/g, "")
+              );
+              if (isNaN(formattedPrice)) {
+                console.error(
+                  `Invalid price for ${fruit.name}:`,
+                  fruit.newPrice
+                );
+                formattedPrice = 0;
+              }
+
+              dispatch(
+                addToCart({
+                  id: fruit.id,
+                  name: fruit.name,
+                  img: fruit.img,
+                  price: formattedPrice,
+                  quantity: 1,
+                })
+              );
+            }}
           />
         ))}
       </div>
