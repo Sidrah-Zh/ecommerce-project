@@ -7,10 +7,34 @@ import breakfast4 from "../assets/brakfast4.jpg";
 import breakfast5 from "../assets/brakfast5.jpg";
 
 const data = [
-  { id: 0, img: breakfast1, name: "Fresh Tomato", price: "$500", route: "/breakfast" },
-  { id: 1, img: breakfast2, name: "Crunchy Crisps", price: "$400", route: "/breakfast" },
-  { id: 2, img: breakfast3, name: "Banana Shake", price: "$300", route: "/breakfast" },
-  { id: 3, img: breakfast4, name: "Almond Organic", price: "$200", route: "/breakfast" },
+  {
+    id: 0,
+    img: breakfast1,
+    name: "Fresh Tomato",
+    price: 500,
+    route: "/breakfast",
+  },
+  {
+    id: 1,
+    img: breakfast2,
+    name: "Crunchy Crisps",
+    price: 400,
+    route: "/breakfast",
+  },
+  {
+    id: 2,
+    img: breakfast3,
+    name: "Banana Shake",
+    price: 300,
+    route: "/breakfast",
+  },
+  {
+    id: 3,
+    img: breakfast4,
+    name: "Almond Organic",
+    price: 200,
+    route: "/breakfast",
+  },
 ];
 
 const FeatureBreakfastSection = () => {
@@ -18,7 +42,9 @@ const FeatureBreakfastSection = () => {
     <div className="container mx-auto px-5 pt-16">
       <div className="lg:flex justify-between items-center mb-6">
         <div>
-          <h3 className="font-medium text-2xl text-[#184D47]">Breakfast and Dairy</h3>
+          <h3 className="font-medium text-2xl text-[#184D47]">
+            Breakfast and Dairy
+          </h3>
           <p className="text-gray-600 mt-2">
             Buy best quality breakfast online from big-basket store near you.
           </p>
@@ -41,7 +67,14 @@ const FeatureBreakfastSection = () => {
         </Link>
 
         {data.map((el) => (
-          <ProductCard key={el.id} img={el.img} name={el.name} price={el.price} route={el.route} />
+          <ProductCard
+            key={el.id}
+            id={el.id}
+            img={el.img}
+            name={el.name}
+            price={el.price}
+            route={el.route}
+          />
         ))}
       </div>
     </div>
