@@ -18,7 +18,7 @@ const CartPage = () => {
   );
 
   return (
-    <div className="container mx-auto px-5 py-8">
+    <div className="container mx-auto px-5 py-8 min-h-screen flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <Link
           to="/"
@@ -41,7 +41,7 @@ const CartPage = () => {
             {cart.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between border-b pb-4"
+                className="flex flex-col sm:flex-row items-center justify-between border-b pb-4 space-y-4 sm:space-y-0"
               >
                 <img
                   src={item.img}
@@ -49,12 +49,12 @@ const CartPage = () => {
                   className="w-20 h-20 rounded-full object-cover border border-gray-300 shadow-md"
                 />
 
-                <div className="flex-1 px-4">
+                <div className="flex-1 text-center sm:text-left px-4">
                   <h3 className="text-lg font-semibold">{item.name}</h3>
                   <p className="text-red-600 font-medium">${item.price}</p>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4">
                   <button
                     onClick={() => dispatch(decreaseQuantity(item.id))}
                     className="bg-gray-300 px-3 py-1 rounded text-lg"
@@ -72,7 +72,7 @@ const CartPage = () => {
 
                 <button
                   onClick={() => dispatch(removeFromCart(item.id))}
-                  className="bg-red-500 text-white px-3 py-1 rounded shadow-md hover:bg-red-600 ml-6"
+                  className="bg-red-500 text-white px-3 py-1 rounded shadow-md hover:bg-red-600"
                 >
                   Remove
                 </button>

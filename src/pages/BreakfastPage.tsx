@@ -23,85 +23,85 @@ const BreakfastPage = () => {
     {
       id: 101,
       name: "Pancakes with Syrup",
-      oldPrice: "$8",
-      newPrice: "$6",
+      oldPrice: 8,
+      newPrice: 6,
       img: breakfast1,
     },
     {
       id: 102,
       name: "Omelette with Toast",
-      oldPrice: "$6",
-      newPrice: "$5",
+      oldPrice: 6,
+      newPrice: 5,
       img: breakfast2,
     },
     {
       id: 103,
       name: "French Toast",
-      oldPrice: "$7",
-      newPrice: "$5.5",
+      oldPrice: 7,
+      newPrice: 5.5,
       img: breakfast3,
     },
     {
       id: 104,
       name: "Granola with Yogurt",
-      oldPrice: "$6",
-      newPrice: "$4.5",
+      oldPrice: 6,
+      newPrice: 4.5,
       img: breakfast4,
     },
     {
       id: 105,
       name: "Avocado Toast",
-      oldPrice: "$9",
-      newPrice: "$7",
+      oldPrice: 9,
+      newPrice: 7,
       img: breakfast5,
     },
     {
       id: 106,
       name: "Scrambled Eggs with Sausage",
-      oldPrice: "$8",
-      newPrice: "$6.5",
+      oldPrice: 8,
+      newPrice: 6.5,
       img: breakfast6,
     },
     {
       id: 107,
       name: "Fruit Salad",
-      oldPrice: "$5",
-      newPrice: "$4",
+      oldPrice: 5,
+      newPrice: 4,
       img: breakfast7,
     },
     {
       id: 108,
       name: "Bagel with Cream Cheese",
-      oldPrice: "$4",
-      newPrice: "$3.5",
+      oldPrice: 4,
+      newPrice: 3.5,
       img: breakfast8,
     },
     {
       id: 109,
       name: "Smoothie Bowl",
-      oldPrice: "$7",
-      newPrice: "$5.5",
+      oldPrice: 7,
+      newPrice: 5.5,
       img: breakfast9,
     },
     {
       id: 110,
       name: "Breakfast Burrito",
-      oldPrice: "$9",
-      newPrice: "$7.5",
+      oldPrice: 9,
+      newPrice: 7.5,
       img: breakfast10,
     },
     {
       id: 111,
       name: "Waffles with Berries",
-      oldPrice: "$8",
-      newPrice: "$6.5",
+      oldPrice: 8,
+      newPrice: 6.5,
       img: breakfast11,
     },
     {
       id: 112,
       name: "Peanut Butter Banana Toast",
-      oldPrice: "$6",
-      newPrice: "$4.5",
+      oldPrice: 6,
+      newPrice: 4.5,
       img: breakfast12,
     },
   ];
@@ -127,32 +127,19 @@ const BreakfastPage = () => {
               key={item.id}
               img={item.img}
               name={item.name}
-              oldPrice={item.oldPrice}
-              newPrice={item.newPrice}
-              onAddToCart={() => {
-                console.log(`Adding to cart: ${item.name}`);
-
-                let formattedPrice = parseFloat(
-                  item.newPrice.replace(/[^0-9.]/g, "")
-                );
-                if (isNaN(formattedPrice)) {
-                  console.error(
-                    `Invalid price for ${item.name}:`,
-                    item.newPrice
-                  );
-                  formattedPrice = 0;
-                }
-
+              oldPrice={`$${item.oldPrice}`}
+              newPrice={`$${item.newPrice}`}
+              onAddToCart={() =>
                 dispatch(
                   addToCart({
                     id: item.id,
                     name: item.name,
                     img: item.img,
-                    price: formattedPrice,
+                    price: item.newPrice,
                     quantity: 1,
                   })
-                );
-              }}
+                )
+              }
             />
           ))}
         </div>

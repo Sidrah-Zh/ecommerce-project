@@ -33,7 +33,7 @@ const ProductCard: React.FC<Product> = ({ id, img, name, price, route }) => {
 
           <button
             onClick={(e) => {
-              e.preventDefault(); // Prevents link navigation when clicking Add to Cart
+              e.preventDefault();
               dispatch(addToCart({ id, img, name, price, quantity: 1 }));
             }}
             className="absolute -top-4 right-2 bg-[#184D47] text-white text-[24px] sm:text-[28px] w-[45px] sm:w-[50px] h-[45px] sm:h-[50px] rounded-full grid place-items-center cursor-pointer"

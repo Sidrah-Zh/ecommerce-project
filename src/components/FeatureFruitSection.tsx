@@ -7,14 +7,14 @@ import fruit4 from "../assets/hero_img_2.jpg";
 import fruit5 from "../assets/fruit5.jpg";
 
 const data = [
-  { id: 0, img: fruit1, name: "Fresh Apple", price: "$5", route: "/fruits" },
-  { id: 1, img: fruit2, name: "Organic Banana", price: "$3", route: "/fruits" },
-  { id: 2, img: fruit3, name: "Fresh Kiwi", price: "$5", route: "/fruits" },
+  { id: 0, img: fruit1, name: "Fresh Apple", price: 500, route: "/fruits" },
+  { id: 1, img: fruit2, name: "Organic Banana", price: 300, route: "/fruits" },
+  { id: 2, img: fruit3, name: "Fresh Kiwi", price: 500, route: "/fruits" },
   {
     id: 3,
     img: fruit4,
     name: "Fresh Pineapple",
-    price: "$5",
+    price: 500,
     route: "/fruits",
   },
 ];
@@ -51,6 +51,7 @@ const FeatureFruitSection = () => {
         {data.map((el) => (
           <ProductCard
             key={el.id}
+            id={el.id}
             img={el.img}
             name={el.name}
             price={el.price}
